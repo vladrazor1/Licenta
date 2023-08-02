@@ -1,0 +1,20 @@
+.headerMenu{
+    height: 100%;
+    float: left;
+    width: 25%;
+    position: fixed;
+
+}
+
+.content{
+    height: 100%;
+    float: left;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.sidebarColumn{
+    height: 100%;
+    float: right;
+    width: 25%
+}
