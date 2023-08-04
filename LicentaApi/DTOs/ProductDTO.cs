@@ -11,6 +11,8 @@ namespace LicentaApi.DTOs
         public long? Price { get; set; }
 
         public string? Text { get; set; }
+        public string? Title { get; set; }
+        public byte[]? Image { get; set; }
 
         public List<OverbiddingDTO>? Overbiddings { get; set; }
 

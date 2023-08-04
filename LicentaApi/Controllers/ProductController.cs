@@ -16,19 +16,22 @@ namespace LicentaApi.Controllers
     public class ProductControler : ControllerBase
     {
         private readonly ProductContext _context;
-        private string _user;
+        private string _user = "";
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public ProductControler(ProductContext context, IHttpContextAccessor contextAccessor)
         {
             _context = context;
             _httpContextAccessor = contextAccessor;
-            _user = _httpContextAccessor.HttpContext.User.Claims.ToArray()[5].ToString().Split(":").Last().Trim();
+            if(_httpContextAccessor?.HttpContext?.User.Claims.ToArray().Length > 5)
+            {
+                _user = _httpContextAccessor?.HttpContext?.User.Claims.ToArray()[5].ToString().Split(":").Last().Trim();
+            }
+            
         }
 
         // GET: api/Product
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult<IEnumerable<Product>>> GetProduct()
         {
             // var userId = _context.ApplicationUsers.Where(x => x.Username.ToLower().Trim().Equals(_user)).FirstOrDefault().Id;
@@ -126,10 +129,12 @@ namespace LicentaApi.Controllers
                 Text = productDTO.Text,
                 StartingDate = productDTO.StartingDate,
                 ExpirationDate = productDTO.ExpirationDate,
+                Title = productDTO.Title,
+                Image = productDTO.Image ?? Array.Empty<byte>()
             };
 
 
-            _context.Products.Add(entity: product);
+            _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);

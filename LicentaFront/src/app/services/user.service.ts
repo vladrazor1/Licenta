@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, delay, map, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -35,7 +35,13 @@ export class UserService {
       .subscribe((user) => {
         localStorage.setItem('user', JSON.stringify(user));
         this.userSubject.next(user);
-        this.router.navigateByUrl('show-all-tweets');
+        this.router.navigateByUrl('/home');
+        of(1, 2, 3, 4, 5)
+        .pipe(
+          tap(val => console.log("Before " + val)),
+          delay(1000)
+        )
+        location.reload();
       });
   }
 
@@ -47,6 +53,12 @@ export class UserService {
     if (!localStorage.getItem('user')) {
       alert('Disconected!');
     }
+    of(1, 2, 3, 4, 5)
+    .pipe(
+      tap(val => console.log("Before " + val)),
+      delay(1000)
+    )
+    location.reload();
   }
 
   private getUserData(): any {
@@ -89,7 +101,7 @@ export class UserService {
         email,
       })
       .subscribe((user) => {
-        this.router.navigateByUrl('show-all-tweets');
+        this.router.navigateByUrl('/home');
       });
   }
 

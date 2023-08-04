@@ -6,6 +6,7 @@ export interface Product {
   id?: number;
   userId?: number;
   categoryId?: number;
+  title?: string;
   price?: number;
   text?: string;
   overbidding?: Overbidding[];

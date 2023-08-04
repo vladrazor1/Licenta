@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { of, tap, delay } from 'rxjs';
+
 
 @Component({
   selector: 'app-login',
@@ -20,7 +22,7 @@ export class LoginComponent {
     private formBuilder: FormBuilder
   ) {
     if (this.userService.userValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     }
   }
 
@@ -57,5 +59,12 @@ export class LoginComponent {
     this.error = '';
     this.loading = true;
     this.userService.login(this.username, this.password);
+    this.router.navigate(['/home']);
+    // of(1, 2, 3, 4, 5)
+    // .pipe(
+    //   tap(val => console.log("Before " + val)),
+    //   delay(1000)
+    // )
+    // location.reload();
   }
 }

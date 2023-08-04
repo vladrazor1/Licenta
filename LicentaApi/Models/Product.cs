@@ -5,6 +5,8 @@ namespace LicentaApi.Models
         public long Id { get; set; }
 
         public long? UserId { get; set; }
+        public string? Title { get; set; }
+        public byte[]? Image { get; set; }
 
         public long? CategoryId { get; set; }
 
