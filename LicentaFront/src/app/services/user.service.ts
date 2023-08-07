@@ -53,12 +53,13 @@ export class UserService {
     if (!localStorage.getItem('user')) {
       alert('Disconected!');
     }
+    
     of(1, 2, 3, 4, 5)
     .pipe(
       tap(val => console.log("Before " + val)),
       delay(1000)
     )
-    location.reload();
+    this.router.navigateByUrl('/home');
   }
 
   private getUserData(): any {
