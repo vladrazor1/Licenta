@@ -1,1 +1,205 @@
-<p>edit-product works!</p>
+<div id="formAddProd">
+    <h1>Edit the Product characteristics!</h1>
+    
+    <div class="hero">
+      <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+        <div class="field">
+          <label class="label" for="nume">Title</label>
+          <div class="control">
+            <input
+            [(ngModel)]="product.title"
+              class="input"
+              id="title"
+              formControlName="title"
+              required
+              minlength="3"
+              [ngClass]="{
+                'is-danger':
+                productForm.controls['title'].invalid &&
+                productForm.controls['title'].dirty &&
+                productForm.controls['title'].touched
+              }"
+            />
+          </div>
+    
+          <div
+            class="notification"
+            *ngIf="
+            productForm.controls['title'].invalid &&
+            productForm.controls['title'].dirty &&
+            productForm.controls['title'].touched
+            "
+          >
+            <p
+              class="help is-danger"
+              *ngIf="productForm.controls['title'].errors?.['required']"
+            >
+            Title is required.
+            </p>
+            <p
+              class="help is-danger"
+              *ngIf="productForm.controls['title'].errors?.['minlength']"
+            >
+            Title must be at least 3 characters long.
+            </p>
+          </div>
+        </div>
+    
+        <div class="field">
+            <label class="label" for="price">Price</label>
+            <div class="control">
+              <input
+              [(ngModel)]="product.price"
+                class="input"
+                id="price"
+                formControlName="price"
+                required
+                min="1"
+                [ngClass]="{
+                  'is-danger':
+                  productForm.controls['price'].invalid &&
+                  productForm.controls['price'].dirty &&
+                  productForm.controls['price'].touched
+                }"
+              />
+            </div>
+      
+            <div
+              class="notification"
+              *ngIf="
+              productForm.controls['price'].invalid &&
+              productForm.controls['price'].dirty &&
+              productForm.controls['price'].touched
+              "
+            >
+              <p
+                class="help is-danger"
+                *ngIf="productForm.controls['price'].errors?.['required']"
+              >
+              Price is required.
+              </p>
+              <p
+                class="help is-danger"
+                *ngIf="productForm.controls['price'].errors?.['min']"
+              >
+              The price must be greater than 0!
+              </p>
+            </div>
+          </div>
+    
+        <div class="field">
+          <label class="label" for="descriere">Description</label>
+          <div class="control">
+            <input
+            [(ngModel)]="product.text"
+              id="text"
+              formControlName="text"
+              required
+              minlength="3"
+              class="input"
+              [ngClass]="{
+                'is-danger':
+                productForm.controls['text'].invalid &&
+                productForm.controls['text'].dirty &&
+                productForm.controls['text'].touched
+              }"
+            />
+            <div
+              class="notification"
+              *ngIf="
+              productForm.controls['text'].invalid &&
+              productForm.controls['text'].dirty &&
+              productForm.controls['text'].touched
+              "
+            >
+              <p
+                class="help danger"
+                *ngIf="productForm.controls['text'].errors?.['required']"
+              >
+              Description is required.
+              </p>
+              <p
+                class="help danger"
+                *ngIf="productForm.controls['text'].errors?.['minlength']"
+              >
+              Description must be at least 3 characters long.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="startingDate">Starting Date</label>
+          <div class="control">
+            <input
+            [(ngModel)]="product.startingDate"
+              id="startingDate"
+              formControlName="startingDate"
+              minlength="3"
+              required
+              class="input"
+              [ngClass]="{
+                'is-danger':
+                productForm.controls['startingDate'].invalid &&
+                productForm.controls['startingDate'].dirty &&
+                productForm.controls['startingDate'].touched
+              }"
+            />
+            <div
+              class="notification"
+              *ngIf="
+              productForm.controls['startingDate'].invalid &&
+              productForm.controls['startingDate'].dirty &&
+              productForm.controls['startingDate'].touched
+              "
+            >
+              <p
+                class="help danger"
+                *ngIf="productForm.controls['startingDate'].errors?.['required']"
+              >
+              Starting Date is required.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+            <label class="label" for="expirationDate">Expiration Date</label>
+            <div class="control">
+              <input
+              [(ngModel)]="product.expirationDate"
+                id="expirationDate"
+                formControlName="expirationDate"
+                minlength="3"
+                required
+                class="input"
+                [ngClass]="{
+                  'is-danger':
+                  productForm.controls['expirationDate'].invalid &&
+                  productForm.controls['expirationDate'].dirty &&
+                  productForm.controls['expirationDate'].touched
+                }"
+              />
+              <div
+                class="notification"
+                *ngIf="
+                productForm.controls['expirationDate'].invalid &&
+                productForm.controls['expirationDate'].dirty &&
+                productForm.controls['expirationDate'].touched
+                "
+              >
+                <p
+                  class="help danger"
+                  *ngIf="productForm.controls['expirationDate'].errors?.['required']"
+                >
+                Expiration Date is required.
+                </p>
+              </div>
+            </div>
+          </div>
+    
+    
+        <button type="submit" [disabled]="productForm.invalid">Edit</button>
+        <button (click)="cancel()" >Cancel</button>
+      </form>
+    </div>
+    </div>
+    

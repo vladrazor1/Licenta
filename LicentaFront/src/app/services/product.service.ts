@@ -18,8 +18,16 @@ getProducts(){
   return this.httpClient.get<Product[]>( API_URL)
 }
 
+getMyProducts(){
+  return this.httpClient.get<Product[]>( API_URL + '/id')
+}
+
 getProduct(id?: number){
   return this.httpClient.get<Product>( API_URL + '/' + id)
+}
+
+getProductByNav(searchValue: string): Observable<Product[]>{
+  return this.httpClient.get<Product[]>(API_URL + '/title/' + searchValue)
 }
 
 addProduct(product : Product) : Observable<Product>{

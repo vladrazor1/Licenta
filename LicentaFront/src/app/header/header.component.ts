@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { HomeComponent } from '../home/home.component';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +9,15 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
+  searchValue = '';
+  searchForm = this.fb.nonNullable.group({
+    searchValue: '',
+  });
   
   constructor(
-    private sharedService:UserService
+    private sharedService:UserService,
+    // private sharedHomepageFunctions: HomeComponent,
+    private fb: FormBuilder,
     ) {}
   
     ngOnInit(): void {
@@ -28,4 +35,12 @@ export class HeaderComponent {
     logOut2(){
       this.sharedService.logout();
     }
+
+    // fatcheData(){
+    //  this.sharedHomepageFunctions.fatcheData();
+    // }
+
+    // onSearchSubmit(): void{
+    //   this.sharedHomepageFunctions.onSearchSubmit();
+    // }
 }

@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,24 +24,30 @@ namespace LicentaApi.Controllers
         {
             _context = context;
             _httpContextAccessor = contextAccessor;
-            if(_httpContextAccessor?.HttpContext?.User.Claims.ToArray().Length > 5)
+            if (_httpContextAccessor?.HttpContext?.User.Claims.ToArray().Length > 5)
             {
                 _user = _httpContextAccessor?.HttpContext?.User.Claims.ToArray()[5].ToString().Split(":").Last().Trim();
             }
-            
         }
 
-        // GET: api/Product
+        // GET: api/ProductControler
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProduct()
         {
-            // var userId = _context.ApplicationUsers.Where(x => x.Username.ToLower().Trim().Equals(_user)).FirstOrDefault().Id;
-            // return await _context.Tweets.Where(x => x.UserId == userId).ToListAsync();
-
             return await _context.Products.ToListAsync();
         }
 
-        // GET: api/Product/5
+        // GET: api/ProductControler/id
+        [HttpGet("id")]
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Product>>> GetMyProduct()
+        {
+            var userId = _context.ApplicationUsers.Where(x => x.Username.ToLower().Trim().Equals(_user)).FirstOrDefault().Id;
+            return await _context.Products.Where(x => x.UserId == userId).ToListAsync();
+
+        }
+
+        // GET: api/ProductControler/5
         [HttpGet("{id}")]
         [Authorize]
         public async Task<ActionResult<Product>> GetProduct(long id)
@@ -55,7 +62,14 @@ namespace LicentaApi.Controllers
             return product;
         }
 
-        // PUT: api/Product/5
+        // GET: api/ProductControler/5
+        [HttpGet("title/{title}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductThatContainStrings(string title)
+        {
+            return await _context.Products.Where(x => x.Title.Contains(title)).ToListAsync();
+        }
+
+        // PUT: api/ProductControler/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [Authorize]
@@ -69,10 +83,9 @@ namespace LicentaApi.Controllers
             var product = await _context.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
 
             product.Price = productDTO.Price;
+            product.Title = productDTO.Title;
             product.Text = productDTO.Text;
             product.View = productDTO.View;
-
-
 
             if (product.Overbiddings?.Count() < 1)
             {
@@ -112,7 +125,7 @@ namespace LicentaApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Tweet
+        // POST: api/ProductControler
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [Authorize]
@@ -125,7 +138,7 @@ namespace LicentaApi.Controllers
                 Id = productDTO.Id,
                 UserId = (int)userId,
                 CategoryId = productDTO.CategoryId,
-                Price= productDTO.Price,
+                Price = productDTO.Price,
                 Text = productDTO.Text,
                 StartingDate = productDTO.StartingDate,
                 ExpirationDate = productDTO.ExpirationDate,
@@ -133,14 +146,13 @@ namespace LicentaApi.Controllers
                 Image = productDTO.Image ?? Array.Empty<byte>()
             };
 
-
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
         }
 
-        // DELETE: api/Product/5
+        // DELETE: api/ProductControler/5
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> DeleteProduct(long id)
@@ -171,6 +183,37 @@ namespace LicentaApi.Controllers
         {
             return _context.Products.Any(e => e.Id == id);
         }
+
+
+        // [HttpPost("uploadFile")]
+        // [DisableRequestSizeLimit]
+        // public IActionResult Upload()
+        // {
+        //     try{
+        //         var file = Request.Form.Files[0];
+        //         var folderName = Path.Combine("Resources", "Images");
+        //         var pathToSave = pathToSave.Combine(Directory.GetCurrentDirectory(), folderName);
+        //         if(file.Lenght > 0)
+        //         {
+        //             var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+        //             var fullPath = pathToSave.Combine(pathToSave, fileName);
+        //             var dbPath = Path.Combine(folderName, fileName);
+        //             using(var stream = new FileStream(fullPath, FileMode.Create))
+        //             {
+        //                 file.CopyTo(stream);
+        //             }
+        //             return OK(new {dbPath});
+        //         }
+        //         else{
+        //             return BadRequest();
+        //         }
+        //     }
+        //     catch{
+
+        //     }
+        // } 
+
+
 
     }
 }

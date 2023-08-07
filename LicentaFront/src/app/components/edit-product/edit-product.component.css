@@ -1,0 +1,11 @@
+#formAddProd{
+    justify-content: center;
+    margin-top: 20%;
+}
+
+
+
+h1 {
+    display: flex;
+    justify-content: center;
+  }

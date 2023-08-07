@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,11 +13,13 @@ import { ProductService } from 'src/app/services/product.service';
 export class AddProductComponent {
 
   productForm: FormGroup = new FormGroup({});
+  path: String | undefined
+  
 
   constructor(
     private productService: ProductService,
     private route: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {}
 
   ngOnInit(): void {
@@ -36,8 +39,6 @@ export class AddProductComponent {
   }
 
 
-
-
   onSubmit(): void {
     console.log(this.product);
     this.productService
@@ -46,6 +47,8 @@ export class AddProductComponent {
         alert('Product added successfully!');
         this.route.navigate(['/home']);
       });
+
+
   }
 
   addProduct(): void {
@@ -59,5 +62,14 @@ export class AddProductComponent {
 
   cancel(): void {
     this.route.navigate(['/home']);
+  }
+
+  
+  
+  upload(event: any){
+     const file = event.target.files[0]
+     if(file){
+      console.log(file);
+     }
   }
 }

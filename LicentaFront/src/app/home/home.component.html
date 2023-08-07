@@ -1,82 +1,73 @@
 
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hello Bulma!</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hello Bulma!</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
 
-  <body>
-    <ul>
-      <li *ngFor="let product of myDataArray">
-        <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">{{ product.price }}&#36;</p>
-            <br />
-            <p class="card-header-title">{{ product.title }}</p>
-
-
-            <div class="dropdown">
-              <button>...</button>
-              <div class="dropdown-options">
-                <a *ngIf="mineProduct(product)" href="#">Eddit</a>
-                <a *ngIf="mineProduct(product)" (click)="deleteProduct(product)"
-                  >Delete</a
-                >
-
-                <a *ngIf="!mineProduct(product)" href="#">Report</a>
-              </div>
-            </div>
-          </header>
-          <div class="card-content">
-            <div class="content">
-
-                <div class="slider">
-                    <span id="slide-1"></span>
-                    <span id="slide-2"></span>
-                    <span id="slide-3"></span>
-                    <div class="image-container">
-                      <img src="https://static.eva.ro/img/auto_resized/db/article/160/869/244004l-320x200-b-c55dfebb.jpg?" class="slide" width="500" height="300" />
-                      <img src="https://yve.ro/wp-content/uploads/2018/04/Fotografii-care-iti-vor-taia-respiratia.-Iata-cele-mai-impresionante-poze-cu-flori-de-cires-de-pe-tot-mapamondul.jpg" class="slide" width="500" height="300" />
-                      <img src="https://imaginidesktop3d.files.wordpress.com/2013/01/16.jpg?w=848" class="slide" width="500" height="300" />
-                    </div>
-                    <div class="buttonsa">
-                      <a  href="#slide-1"></a>
-                      <a  href="#slide-2"></a>
-                      <a  href="#slide-3"></a>
-                    </div>
-                  </div>
+<body>
+  <form>
+    <div class="productTable">
+    <div *ngFor="let product of myDataArray">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">{{ product.price }}&#36;</p>
+          <br />
+          <p class="card-header-title">{{ product.title }}</p>
 
 
-              {{ product.text }}
-              <br />
-              <br />
-              <p>
-                Starting Time:
-                <time>{{ product.startingDate }}</time>
-              </p>
-              <p>
-                Expiration Time:
-                <time>{{ product.expirationDate }}</time>
-              </p>
+          <div class="dropdown">
+            <button>...</button>
+            <div class="dropdown-options">
+              <a *ngIf="mineProduct(product)" [routerLink]="['/eddit/', product.id]">Eddit</a>
+              <a *ngIf="mineProduct(product)" (click)="deleteProduct(product)">Delete</a
+              >
+
+              <a *ngIf="!mineProduct(product)" href="#">Report</a>
             </div>
           </div>
-          <footer class="card-footer">
-            <a href="#" class="card-footer-item">Save</a>
-            <a href="#" class="card-footer-item">More</a>
-            <a href="#" class="card-footer-item">Share</a>
-          </footer>
+        </header>
+        <div class="card-content">
+          <div class="content">
+
+              <div class="slider">
+                  <div class="image-container">
+                    <img src="/assets/Images/test.jpeg"/>
+                  </div>
+                </div>
+
+
+            {{ product.text }}
+            <br />
+            <br />
+            <p>
+              Starting Time:
+              <time>{{ product.startingDate }}</time>
+            </p>
+            <p>
+              Expiration Time:
+              <time>{{ product.expirationDate }}</time>
+            </p>
+          </div>
         </div>
-      </li>
-    </ul>
- 
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Save</a>
+          <a href="#" class="card-footer-item">More</a>
+          <a href="#" class="card-footer-item">Share</a>
+        </footer>
+      </div>
+    </div>
+  </div>
+  </form>
+
 </body>
 
-    
+  
 <div class="parent">
-    <button id="newProd" class="round-5" onclick="window.location='/show-all-product/add';"> NEW AD</button>
+  <button *ngIf="isLoggedIn()" id="newProd" class="round-5" onclick="window.location='/show-all-product/add';"> NEW AD</button>
 </div>

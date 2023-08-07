@@ -1,35 +1,26 @@
-
 import { Component } from '@angular/core';
 import { Product } from '../modules/product';
 import { ProductService } from '../services/product.service';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { of, tap, delay } from 'rxjs';
-import { FormBuilder } from '@angular/forms';
-
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-my-posts',
+  templateUrl: './my-posts.component.html',
+  styleUrls: ['./my-posts.component.css']
 })
-export class HomeComponent {
+export class MyPostsComponent {
   myDataArray: Product[] = [];
-  searchValue = '';
-  searchForm = this.fb.nonNullable.group({
-    searchValue: '',
-  });
 
   constructor(
     private productService: ProductService,
     private sharedService: UserService,
-    private route: Router,
-    private fb: FormBuilder,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
     this.productService
-      .getProducts()
+      .getMyProducts()
       .subscribe((data: Product[]) => (this.myDataArray = data));
   }
 
@@ -49,16 +40,5 @@ export class HomeComponent {
 
   isLoggedIn(){
     return this.sharedService.isLoggedIn();
-  }
-
-  fatcheData(): void{
-    this.productService.getProductByNav(this.searchValue).subscribe((myDataArray)=>{
-       this.myDataArray= myDataArray;
-    })
-  }
-
-  onSearchSubmit(): void{
-    this.searchValue= this.searchForm.value.searchValue ?? '';
-    this.fatcheData();
   }
 }
