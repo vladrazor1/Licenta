@@ -1,28 +1,71 @@
 <section>
-  <div>
-    <h2>{{ product.title }}</h2>
+  <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
     <div>
+      <h2>{{ product.title }}</h2>
       <div>
-        <div id="price">{{ product.price }}</div>
-        <br />
-        <div id="text">{{ product.text }}</div>
-        <br />
-        <div id="start">{{ product.startingDate }}</div>
-        <br />
-        <div id="end">{{ product.expirationDate }}</div>
-        <br />
-      </div>
-      <div>
-        <img src="/assets/Images/test.jpeg"/>
+        <div>
+          <div class="field">
+            <label class="label" for="price">Price</label>
+            <div class="control">
+              <input
+                [(ngModel)]="product.price"
+                class="input"
+                id="price"
+                formControlName="price"
+                required
+                min="1"
+                [ngClass]="{
+                  'is-danger':
+                    productForm.controls['price'].invalid &&
+                    productForm.controls['price'].dirty &&
+                    productForm.controls['price'].touched
+                }"
+              />
+            </div>
+
+            <div
+              class="notification"
+              *ngIf="
+                productForm.controls['price'].invalid &&
+                productForm.controls['price'].dirty &&
+                productForm.controls['price'].touched
+              "
+            >
+              <p
+                class="help is-danger"
+                *ngIf="productForm.controls['price'].errors?.['required']"
+              >
+                Price is required.
+              </p>
+              <p
+                class="help is-danger"
+                *ngIf="productForm.controls['price'].errors?.['min']"
+              >
+                The price must be greater than the last price!
+              </p>
+            </div>
+          </div>
+          <br />
+          <div id="text">{{ product.text }}</div>
+          <br />
+          <div id="start">{{ product.startingDate }}</div>
+          <br />
+          <div id="end">{{ product.expirationDate }}</div>
+          <br />
+        </div>
+        <div>
+          <img src="/assets/Images/test.jpeg" />
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
-<button
-  id="newProd"
-  class="round-5"
-  onclick="window.location='/show-all-product/add';"
->
-  Checkout
-</button>
+    <button
+      id="check-out"
+      class="round-5"
+      type="submit"
+      [disabled]="productForm.invalid"
+    >
+      Checkout
+    </button>
+  </form>
+</section>

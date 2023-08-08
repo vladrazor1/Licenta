@@ -59,8 +59,9 @@
             </div>
           </div>
           <footer class="card-footer">
-            <a href="#" class="card-footer-item">Save</a>
+            <a  *ngIf="!mineProduct(product)"  href="#" class="card-footer-item">Save</a>
             <a
+            *ngIf="!mineProduct(product)"
               [routerLink]="['/check-out/', product.id]"
               class="card-footer-item"
               >More</a
