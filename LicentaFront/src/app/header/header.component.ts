@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { HomeComponent } from '../home/home.component';
 import { FormBuilder } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,11 +14,13 @@ export class HeaderComponent {
   searchForm = this.fb.nonNullable.group({
     searchValue: '',
   });
+
+  @Output() search = new EventEmitter<string>();
   
   constructor(
     private sharedService:UserService,
-    // private sharedHomepageFunctions: HomeComponent,
     private fb: FormBuilder,
+    private route: Router,
     ) {}
   
     ngOnInit(): void {
@@ -36,11 +39,9 @@ export class HeaderComponent {
       this.sharedService.logout();
     }
 
-    // fatcheData(){
-    //  this.sharedHomepageFunctions.fatcheData();
-    // }
-
-    // onSearchSubmit(): void{
-    //   this.sharedHomepageFunctions.onSearchSubmit();
-    // }
+    onSearchSubmit(): void{
+      localStorage.setItem('searchValue',this.searchValue);
+      window.location.reload();
+      this.route.navigate(['/home']);
+    }
 }

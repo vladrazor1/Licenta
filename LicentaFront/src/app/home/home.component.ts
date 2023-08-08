@@ -28,9 +28,17 @@ export class HomeComponent {
   ) {}
 
   ngOnInit(): void {
-    this.productService
+    let search = localStorage.getItem('searchValue') ?? '';
+    if(search != '')
+    {
+      console.log(search + 'onInnit');
+      this.productService.getProductByNav(search).subscribe((data: Product[]) => (this.myDataArray = data));
+    }else
+    {
+      this.productService
       .getProducts()
       .subscribe((data: Product[]) => (this.myDataArray = data));
+    }
   }
 
   mineProduct(product: Product): boolean {
@@ -58,6 +66,7 @@ export class HomeComponent {
   }
 
   onSearchSubmit(): void{
+    console.log('search value ' + localStorage.getItem('searchValue'));
     this.searchValue= this.searchForm.value.searchValue ?? '';
     this.fatcheData();
   }
