@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "vladutfirebase": {
+      "hosting": {
+        "LicentaFront": [
+          "vladutfirebase"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "vladutfirebase"
+  }
+}

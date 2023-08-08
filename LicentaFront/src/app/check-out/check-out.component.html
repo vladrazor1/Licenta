@@ -1,0 +1,28 @@
+<section>
+  <div>
+    <h2>{{ product.title }}</h2>
+    <div>
+      <div>
+        <div id="price">{{ product.price }}</div>
+        <br />
+        <div id="text">{{ product.text }}</div>
+        <br />
+        <div id="start">{{ product.startingDate }}</div>
+        <br />
+        <div id="end">{{ product.expirationDate }}</div>
+        <br />
+      </div>
+      <div>
+        <img src="/assets/Images/test.jpeg"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<button
+  id="newProd"
+  class="round-5"
+  onclick="window.location='/show-all-product/add';"
+>
+  Checkout
+</button>

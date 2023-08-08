@@ -1,9 +1,12 @@
 
 import { Component } from '@angular/core';
+// import { AngularFireStorage } from "@angular/fire/storage";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/modules/product';
 import { ProductService } from 'src/app/services/product.service';
+import { map, finalize } from "rxjs/operators";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-add-product',
@@ -20,6 +23,7 @@ export class AddProductComponent {
     private productService: ProductService,
     private route: Router,
     private formBuilder: FormBuilder,
+    // private storage: AngularFireStorage,
   ) {}
 
   ngOnInit(): void {
@@ -47,8 +51,6 @@ export class AddProductComponent {
         alert('Product added successfully!');
         this.route.navigate(['/home']);
       });
-
-
   }
 
   addProduct(): void {
@@ -66,10 +68,36 @@ export class AddProductComponent {
 
   
   
-  upload(event: any){
-     const file = event.target.files[0]
-     if(file){
-      console.log(file);
-     }
+
+
+  // title = "cloudsSorage";
+  // selectedFile: File = null;
+  // fb;
+  // downloadURL: Observable<string>;
+
+  onFileSelected(event: any) {
+    // var n = Date.now();
+    // const file = event.target.files[0];
+    // const filePath = `RoomsImages/${n}`;
+    // const fileRef = this.storage.ref(filePath);
+    // const task = this.storage.upload(`RoomsImages/${n}`, file);
+    // task
+    //   .snapshotChanges()
+    //   .pipe(
+    //     finalize(() => {
+    //       this.downloadURL = fileRef.getDownloadURL();
+    //       this.downloadURL.subscribe(url => {
+    //         if (url) {
+    //           this.fb = url;
+    //         }
+    //         console.log(this.fb);
+    //       });
+    //     })
+    //   )
+    //   .subscribe(url => {
+    //     if (url) {
+    //       console.log(url);
+    //     }
+  //     });
   }
 }

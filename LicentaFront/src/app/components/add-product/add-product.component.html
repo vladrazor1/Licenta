@@ -194,7 +194,13 @@
       </div>
 
       
-      <input type="file" accept= *.jpg.png.jpeg (change)="upload($event)" />
+      <input type="file"
+      id="file"
+      #userPhoto
+      (change)="onFileSelected($event)"
+      name="image"
+      autocomplete="off"
+      />
       <p><img id="output" width="200" /></p>
 
       <button type="submit" [disabled]="productForm.invalid">Add</button>
