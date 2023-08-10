@@ -14,54 +14,71 @@
 </head>
 
 <body>
-  <ul>
-    <li *ngFor="let product of myDataArray">
-      <div class="card">
-        <header class="card-header">
-          <p class="card-header-title">{{ product.price }}&#36;</p>
-          <br />
-          <p class="card-header-title">{{ product.title }}</p>
+  <form>
+    <div class="productTable">
+      <div *ngFor="let product of myDataArray">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">{{ product.price }}&#36;</p>
+            <br />
+            <p class="card-header-title">{{ product.title }}</p>
 
-          <div class="dropdown">
-            <button>...</button>
-            <div class="dropdown-options">
-              <a
-                *ngIf="mineProduct(product)"
-                [routerLink]="['/eddit/', product.id]"
-                >Eddit</a
-              >
-              <a *ngIf="mineProduct(product)" (click)="deleteProduct(product)"
-                >Delete</a
-              >
+            <div class="dropdown">
+              <button>...</button>
+              <div class="dropdown-options">
+                <a
+                  *ngIf="mineProduct(product)"
+                  [routerLink]="['/eddit/', product.id]"
+                  >Eddit</a
+                >
+                <a *ngIf="mineProduct(product)" (click)="deleteProduct(product)"
+                  >Delete</a
+                >
 
-              <a *ngIf="!mineProduct(product)" href="#">Report</a>
+                <a *ngIf="!mineProduct(product)" href="#">Report</a>
+              </div>
+            </div>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <img src="/assets/Images/test.jpeg" />
+              <br />
+              <p class="cardInfos">
+                {{ product.text }}
+              </p>
+              <br />
+              <br />
+              <p class="cardInfos">
+                Starting Time:
+                <time>{{ product.startingDate }}</time>
+              </p>
+              <p class="cardInfos">
+                Expiration Time:
+                <time>{{ product.expirationDate }}</time>
+              </p>
             </div>
           </div>
-        </header>
-        <div class="card-content">
-          <div class="content">
-            <img src="/assets/Images/test.jpeg" />
+          <footer class="card-footer">
+            <div *ngIf="isLoggedIn()" class="card-footer-item">
+              <a *ngIf="!mineProduct(product)" href="#" class="card-footer-item"
+                >Save</a
+              >
 
-            {{ product.text }}
-            <br />
-            <br />
-            <p>
-              Starting Time:
-              <time>{{ product.startingDate }}</time>
-            </p>
-            <p>
-              Expiration Time:
-              <time>{{ product.expirationDate }}</time>
-            </p>
-          </div>
+              <a
+                *ngIf="!mineProduct(product)"
+                [routerLink]="['/check-out/', product.id]"
+                class="card-footer-item"
+                >More</a
+              >
+
+              <a href="#" class="card-footer-item">Share</a>
+            </div>
+          </footer>
         </div>
-        <footer class="card-footer">
-          <a href="#" class="card-footer-item">Share</a>
-        </footer>
+        <br />
       </div>
-      <br />
-    </li>
-  </ul>
+    </div>
+  </form>
 </body>
 
 <div class="parent">

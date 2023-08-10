@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { HomeComponent } from '../home/home.component';
 import { FormBuilder } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { of, tap, delay } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -42,6 +43,8 @@ export class HeaderComponent {
     onSearchSubmit(): void{
       localStorage.setItem('searchValue',this.searchValue);
       window.location.reload();
-      this.route.navigate(['/home']);
+  
+       this.route.navigate(['/home']);
     }
+    
 }

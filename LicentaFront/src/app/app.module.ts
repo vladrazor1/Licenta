@@ -29,6 +29,7 @@ import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { CheckOutComponent } from './check-out/check-out.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CheckOutComponent } from './check-out/check-out.component';
     HomeComponent,
     FooterComponent,
     MyPostsComponent,
-    CheckOutComponent
+    CheckOutComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Product } from '../modules/product';
 import { ProductService } from '../services/product.service';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-my-posts',
@@ -11,11 +12,16 @@ import { Router } from '@angular/router';
 })
 export class MyPostsComponent {
   myDataArray: Product[] = [];
+  searchValue = '';
+  searchForm = this.fb.nonNullable.group({
+    searchValue: '',
+  });
 
   constructor(
     private productService: ProductService,
     private sharedService: UserService,
-    private route: Router
+    private route: Router,
+    private fb: FormBuilder,
   ) {}
 
   ngOnInit(): void {
@@ -40,5 +46,18 @@ export class MyPostsComponent {
 
   isLoggedIn(){
     return this.sharedService.isLoggedIn();
+  }
+
+
+  fatcheData(): void{
+    this.productService.getProductByNav(this.searchValue).subscribe((myDataArray)=>{
+       this.myDataArray= myDataArray;
+    })
+  }
+
+  onSearchSubmit(): void{
+    console.log('search value ' + localStorage.getItem('searchValue'));
+    this.searchValue= this.searchForm.value.searchValue ?? '';
+    this.fatcheData();
   }
 }
