@@ -13,6 +13,7 @@ import { UserService } from '../services/user.service';
 })
 export class MyProfileComponent {
   user: string | undefined;
+  email: string | undefined;
 
   constructor(
     private userService:UserService,
@@ -22,6 +23,11 @@ export class MyProfileComponent {
     ngOnInit(): void {
     this.user = this.userService
       .getUsername()
+
+      console.log(this.userService
+        .getEmail())
+      this.email = this.userService
+      .getEmail()
     }
 
 

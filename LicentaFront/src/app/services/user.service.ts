@@ -78,6 +78,14 @@ export class UserService {
     return undefined;
   }
 
+  getEmail(): string | undefined {
+    const user = this.userValue;
+    if (user) {
+      return this.decodeToken(this.getUserData().token).Email;
+    }
+    return undefined;
+  }
+
   getUserId() :number | undefined {
     const user = this.userValue;
     if (user) {

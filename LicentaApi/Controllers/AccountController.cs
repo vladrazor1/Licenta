@@ -31,7 +31,7 @@ namespace LicentaApi.Controllers
         public async Task<ActionResult> Register([FromBody] RegisterDTO model)
         {
             string hashedPassword = ComputeSha256Hash(model.Password);
-            var user = new User { Username = model.Username, Password = hashedPassword };
+            var user = new User { Username = model.Username, Password = hashedPassword, Email = model.Email };
 
             // TODO: validate username to be unique
 
@@ -67,6 +67,7 @@ namespace LicentaApi.Controllers
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
                         new Claim("UserId", user.Id.ToString()),
                         new Claim("Username", user.Username),
+                        new Claim("Email", user.Email)
                     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
