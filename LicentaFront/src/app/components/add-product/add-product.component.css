@@ -10,3 +10,5 @@ h1 {
     display: flex;
     justify-content: center;
   }
+
+  .radio { font-weight: bold; }

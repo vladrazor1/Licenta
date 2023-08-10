@@ -69,6 +69,14 @@ namespace LicentaApi.Controllers
             return await _context.Products.Where(x => x.Title.Contains(title)).ToListAsync();
         }
 
+                // GET: api/Category/5
+        [HttpGet("category/{category}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductWithSpecificCategory(long category)
+        {
+            return await _context.Products.Where(x => x.CategoryId.Equals(category)).ToListAsync();
+            
+        }
+
         // PUT: api/ProductControler/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -83,6 +91,7 @@ namespace LicentaApi.Controllers
             var product = await _context.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
 
             product.Price = productDTO.Price;
+            product.CategoryId= productDTO.CategoryId;
             product.Title = productDTO.Title;
             product.Text = productDTO.Text;
             product.View = productDTO.View;
@@ -143,7 +152,7 @@ namespace LicentaApi.Controllers
                 StartingDate = productDTO.StartingDate,
                 ExpirationDate = productDTO.ExpirationDate,
                 Title = productDTO.Title,
-                Image = productDTO.Image ?? Array.Empty<byte>()
+                // Image = productDTO.Image ?? Array.Empty<byte>()
             };
 
             _context.Products.Add(product);

@@ -30,6 +30,7 @@ import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { CategoryProductsComponent } from './category-products/category-products.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
     FooterComponent,
     MyPostsComponent,
     CheckOutComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    CategoryProductsComponent
   ],
   imports: [
     BrowserModule,

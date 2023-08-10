@@ -22,6 +22,10 @@ getMyProducts(){
   return this.httpClient.get<Product[]>( API_URL + '/id')
 }
 
+getProductsWithSpecificCategory(categoryId: number){
+  return this.httpClient.get<Product[]>( API_URL + '/category/'+ categoryId)
+}
+
 getProduct(id?: number){
   return this.httpClient.get<Product>( API_URL + '/' + id)
 }
@@ -31,6 +35,7 @@ getProductByNav(searchValue: string): Observable<Product[]>{
 }
 
 addProduct(product : Product) : Observable<Product>{
+  console.log(product)
   return this.httpClient.post<Product>(API_URL, product)
 }
 
@@ -41,4 +46,6 @@ updateProduct(product : Product) : Observable<Product> {
 deleteProduct(id?: number) : Observable<Product>{
   return this.httpClient.delete<Product>( API_URL + '/' + id)
 }
+
+
 }

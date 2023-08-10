@@ -1,5 +1,3 @@
-
-
 <div id="formAddProd">
   <h1>Enter the Product characteristics!</h1>
 
@@ -86,7 +84,34 @@
           </p>
         </div>
       </div>
+      <br />
 
+      <!-- <div class="radio">
+        <label for="cat1">Category:</label>
+        <br />
+        <span *ngFor="let cat of categorys">
+          <input
+            type="radio"
+            id="{{ cat.id }}"
+            value="{{ cat.value }}"
+            name="Furniture"
+        
+          />
+          <label for="Furniture">{{ cat.value }}</label
+          ><br />
+        </span>
+      </div> -->
+
+      <div class="radio">
+        <p>Category:</p>
+        <input type="radio" id="category1"  value= 1  formControlName="categoryId">
+        <label for="category1">Furniture</label><br />
+        <br />
+        <input type="radio" id="category2"  value= 2 formControlName="categoryId" />
+        <label for="category2">Cars</label><br />
+      </div>
+      <br />
+      <br />
       <div class="field">
         <label class="label" for="descriere">Description</label>
         <div class="control">
@@ -193,13 +218,13 @@
         </div>
       </div>
 
-      
-      <input type="file"
-      id="file"
-      #userPhoto
-      (change)="onFileSelected($event)"
-      name="image"
-      autocomplete="off"
+      <input
+        type="file"
+        id="file"
+        #userPhoto
+        (change)="onFileSelected($event)"
+        name="image"
+        autocomplete="off"
       />
       <p><img id="output" width="200" /></p>
 

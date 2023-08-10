@@ -1,74 +1,65 @@
-
+import { Category } from './../../modules/category';
 import { Component } from '@angular/core';
 // import { AngularFireStorage } from "@angular/fire/storage";
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/modules/product';
 import { ProductService } from 'src/app/services/product.service';
-import { map, finalize } from "rxjs/operators";
-import { Observable } from "rxjs";
+import { map, finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent {
-
   productForm: FormGroup = new FormGroup({});
-  path: String | undefined
-  
+  path: String | undefined;
+  defaultCategory = 'Furniture';
 
   constructor(
     private productService: ProductService,
     private route: Router,
-    private formBuilder: FormBuilder,
-    // private storage: AngularFireStorage,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       price: ['', [Validators.required, Validators.min(1)]],
+      categoryId: ['', [Validators.required]],
       text: ['', [Validators.required, Validators.minLength(3)]],
       startingDate: ['', [Validators.required]],
       expirationDate: ['', [Validators.required]],
+      
     });
   }
 
   get product(): Product {
     const formValue = this.productForm.value;
-   
-    return { ...formValue};
+    console.log(formValue)
+    return { ...formValue };
   }
-
 
   onSubmit(): void {
     console.log(this.product);
-    this.productService
-      .addProduct(this.product)
-      .subscribe((_) => {
-        alert('Product added successfully!');
-        this.route.navigate(['/home']);
-      });
+    this.productService.addProduct(this.product).subscribe((_) => {
+      alert('Product added successfully!');
+      this.route.navigate(['/home']);
+    });
   }
 
   addProduct(): void {
-    this.productService
-    .addProduct(this.product)
-      .subscribe((data: Product) => {
-        alert('Product added successfully!');
-        this.route.navigate(['/home']);
-      });
+    this.productService.addProduct(this.product).subscribe((data: Product) => {
+      alert('Product added successfully!');
+      this.route.navigate(['/home']);
+    });
   }
 
   cancel(): void {
     this.route.navigate(['/home']);
   }
-
-  
-  
-
 
   // title = "cloudsSorage";
   // selectedFile: File = null;
@@ -98,6 +89,6 @@ export class AddProductComponent {
     //     if (url) {
     //       console.log(url);
     //     }
-  //     });
+    //     });
   }
 }
