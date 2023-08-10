@@ -47,5 +47,8 @@ deleteProduct(id?: number) : Observable<Product>{
   return this.httpClient.delete<Product>( API_URL + '/' + id)
 }
 
+getProductPrice(product : Product){
+  return product.price
+}
 
 }

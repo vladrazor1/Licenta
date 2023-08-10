@@ -1,9 +1,9 @@
 <section>
-  <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+  <div>
+    <h2>{{ product.title }}</h2>
     <div>
-      <h2>{{ product.title }}</h2>
       <div>
-        <div>
+        <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
           <div class="field">
             <label class="label" for="price">Price</label>
             <div class="control">
@@ -13,7 +13,6 @@
                 id="price"
                 formControlName="price"
                 required
-                min="1"
                 [ngClass]="{
                   'is-danger':
                     productForm.controls['price'].invalid &&
@@ -52,20 +51,21 @@
           <br />
           <div id="end">{{ product.expirationDate }}</div>
           <br />
-        </div>
-        <div>
-          <img src="/assets/Images/test.jpeg" />
-        </div>
+
+          <div>
+            <img src="/assets/Images/test.jpeg" />
+          </div>
+
+          <button
+            id="check-out"
+            class="round-5"
+            type="submit"
+            [disabled]="productForm.invalid"
+          >
+            Checkout
+          </button>
+        </form>
       </div>
     </div>
-
-    <button
-      id="check-out"
-      class="round-5"
-      type="submit"
-      [disabled]="productForm.invalid"
-    >
-      Checkout
-    </button>
-  </form>
+  </div>
 </section>

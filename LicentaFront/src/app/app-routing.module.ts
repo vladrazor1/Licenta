@@ -10,6 +10,7 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { CategoryProductsComponent } from './category-products/category-products.component';
 
 const routes: Routes = [
   {path: 'home' ,component: HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'my-posts',component: MyPostsComponent},
   {path: 'check-out/:id',component: CheckOutComponent},
   {path: 'my-profile',component: MyProfileComponent},
+  {path: 'category-products/:categoryId',component: CategoryProductsComponent},
 ];
 
 @NgModule({

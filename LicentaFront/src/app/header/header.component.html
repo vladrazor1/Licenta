@@ -1,133 +1,156 @@
 <!-- <!DOCTYPE html>
 <html>
     -->
-    <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>Hello Bulma!</title>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-      />
-    
-      <title>Font Awesome Icons</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      />
-    
-      <title>W3.CSS</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      />
-    </head>
-    
-    <div class="flex-container">
-      <div class="flex-item">
-        <aside class="menu">
-            <figure class="logo">
-                <a href="/home">
-                <img class="is-rounded" src="/assets/Images/Logo.jpg" />
-                </a>
-              </figure>
-          <br />
-          <ul class="menu-list">
-            <br />
-            <li>
-              <div class="container">
-                <div class="topnav">
-                  <div class="search-container">
-                      <input type="text" [(ngModel)]="searchValue" placeholder="Search.." name="search" class="searchBarInput" />
-                      <button type="submit" (click)="onSearchSubmit()">Submit</button>
-                  </div>
-                </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hello Bulma!</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  />
+
+  <title>Font Awesome Icons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+
+  <title>W3.CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+</head>
+
+<div class="flex-container">
+  <div class="flex-item">
+    <aside class="menu">
+      <figure class="logo">
+        <a href="/home">
+          <img class="is-rounded" src="/assets/Images/Logo.jpg" />
+        </a>
+      </figure>
+      <br />
+      <ul class="menu-list">
+        <br />
+        <li>
+          <div class="container">
+            <div class="topnav">
+              <div class="search-container">
+                <input
+                  type="text"
+                  [(ngModel)]="searchValue"
+                  placeholder="Search.."
+                  name="search"
+                  class="searchBarInput"
+                />
+                <button type="submit"  (click)="onSearchSubmit()">Submit</button>
+              
               </div>
-            </li>
-            <br />
-            <li>
-              <div class="container">
-                <i class="fa fa-home"></i>
-                <a [routerLink]="['/home']">Home</a>
-              </div>
-            </li>
-            <br />
-            <li>
-              <div class="container">
-                <i class="fa fa-bell-o"></i>
-                <a [routerLink]="['#']">Notifications</a>
-              </div>
-            </li>
-            <br />
-            <li>
-              <div class="container">
-                <i class="fa fa-bars"></i>
-                <a [routerLink]="['#']">Category</a>
-              </div>
-            </li>
-            <br />
-            <li>
-              <div class="container">
-                <i class="fa fa-bookmark-o"></i>
-                <a [routerLink]="['#']">Bookmarks</a>
-              </div>
-            </li>
-            <br />
-            <li>
-              <div class="container">
-                <i class="fa fa-user-o"></i>
-                <a [routerLink]="['/my-profile']">Profile</a>
-              </div>
-            </li>
-            <br />
-            <li>
-              <div class="container">
-                <i class="fa fa-folder-open-o"></i>
-                <a [routerLink]="['/my-posts']">My posts</a>
-              </div>
-            </li>
-            <br />
-          </ul>
-        </aside>
-      </div>
-      <div class="flex-item">
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a
-                *ngIf="!getUsername2()"
-                class="button is-primary"
-                [routerLink]="['/register']"
-              >
-                <strong>Sign up</strong>
-              </a>
-              <a
-                *ngIf="!isLoggedIn2()"
-                class="button is-light"
-                [routerLink]="['/logIn']"
-              >
-                Log in
-              </a>
-    
-              <a *ngIf="isLoggedIn2()" class="button is-light">
-                <strong>{{ getUsername2() }}</strong>
-              </a>
-    
-              <button
-                *ngIf="isLoggedIn2()"
-                class="button is-light"
-                (click)="logOut2()"
-                onclick="window.location.href='/home';"
-              >
-                Log out
-              </button>
             </div>
           </div>
+        </li>
+        <br />
+        <li>
+          <div class="container">
+            <i class="fa fa-home"></i>
+            <a [routerLink]="['/home']">Home</a>
+          </div>
+        </li>
+        <br />
+        <li>
+          <div class="container">
+            <i class="fa fa-bell-o"></i>
+            <a [routerLink]="['#']">Notifications</a>
+          </div>
+        </li>
+        <br />
+        <li>
+          <div class="container">
+            <i class="fa fa-bars"></i>
+            <!-- 
+            <select name="Category" id="cars">
+              <option>
+                <a [routerLink]="['/category-products/:1']">Furniture</a>
+              </option>
+              <option>
+                <a [routerLink]="['/category-products/:2']">Cars</a>
+              </option>
+            </select> -->
+
+            <div class="dropdown">
+              <a>Category</a>
+              <div class="dropdown-content">
+                <a href='/category-products/1'>Furniture</a>
+                <br />
+                <a href='/category-products/2'>Cars</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <br />
+        <li>
+          <div class="container">
+            <i class="fa fa-bookmark-o"></i>
+            <a [routerLink]="['#']">Bookmarks</a>
+          </div>
+        </li>
+        <br />
+        <li>
+          <div class="container">
+            <i class="fa fa-user-o"></i>
+            <a [routerLink]="['/my-profile']">Profile</a>
+          </div>
+        </li>
+        <br />
+        <li>
+          <div class="container">
+            <i class="fa fa-folder-open-o"></i>
+            <a [routerLink]="['/my-posts']">My posts</a>
+          </div>
+        </li>
+        <br />
+      </ul>
+    </aside>
+  </div>
+  <div class="flex-item">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a
+            *ngIf="!getUsername2()"
+            class="button is-primary"
+            [routerLink]="['/register']"
+          >
+            <strong>Sign up</strong>
+          </a>
+          <a
+            *ngIf="!isLoggedIn2()"
+            class="button is-light"
+            [routerLink]="['/logIn']"
+          >
+            Log in
+          </a>
+
+          <a *ngIf="isLoggedIn2()" class="button is-light">
+            <strong>{{ getUsername2() }}</strong>
+          </a>
+
+          <button
+            *ngIf="isLoggedIn2()"
+            class="button is-light"
+            (click)="logOut2()"
+            onclick="window.location.href='/home';"
+          >
+            Log out
+          </button>
         </div>
       </div>
     </div>
-    <!-- </html> -->
-    
+  </div>
+</div>
+<!-- </html> -->

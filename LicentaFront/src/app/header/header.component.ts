@@ -42,9 +42,10 @@ export class HeaderComponent {
 
     onSearchSubmit(): void{
       localStorage.setItem('searchValue',this.searchValue);
-      window.location.reload();
-  
+      console.log(window.location.href)
+      if(window.location.href == 'http://localhost:4200/home'){
+        location.reload();
+      }
        this.route.navigate(['/home']);
     }
-    
 }

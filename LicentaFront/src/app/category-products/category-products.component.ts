@@ -27,12 +27,15 @@ export class CategoryProductsComponent {
     private sharedService: UserService,
     private route: Router,
     private fb: FormBuilder,
-    
-  ) {}
+  ) {
+   
+    this.activatedRoute.params.subscribe((params) => {
+  
+      this.categoryId = params['categoryId'];
+    });
+  }
 
   ngOnInit(): void {
-    let categoryId =
-
     this.productService
       .getProductsWithSpecificCategory(this.categoryId)
       .subscribe((data: Product[]) => (this.myDataArray = data));

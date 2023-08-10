@@ -11,10 +11,9 @@ import { ProductService } from '../services/product.service';
 })
 export class CheckOutComponent {
 
-
+  
   product = {} as Product;
   productForm: FormGroup = new FormGroup({});
-  lastPrice = 100;
 
   constructor(
     private productService: ProductService,
@@ -33,10 +32,10 @@ export class CheckOutComponent {
       .getProduct(this.product.id)
       .subscribe((data: Product) => (this.product = data));
 
-
       this.productForm = this.formBuilder.group({
-        price: ['', [Validators.required, Validators.min(this.lastPrice)]],
+        price: ['', [Validators.required, Validators.min(1)]],
       });
+
   }
 
 
