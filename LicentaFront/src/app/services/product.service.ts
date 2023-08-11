@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../modules/product';
-import { API_URL } from '../constants';
+import { API_URL, API_URL_Mail } from '../constants';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -47,8 +47,8 @@ deleteProduct(id?: number) : Observable<Product>{
   return this.httpClient.delete<Product>( API_URL + '/' + id)
 }
 
-getProductPrice(product : Product){
-  return product.price
+sendEmail(productName: string, productPrice: number): Observable<void>{
+  return this.httpClient.post<void>(API_URL_Mail, {productName: productName, productPrice: productPrice});
 }
 
 }

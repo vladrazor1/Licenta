@@ -19,8 +19,10 @@ namespace LicentaApi.Controllers
         private readonly ProductContext _context;
         private string _user = "";
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private IEmailSender emailSender;
+        // private readonly IEmailSender emailSender; 
 
-        public ProductControler(ProductContext context, IHttpContextAccessor contextAccessor)
+        public ProductControler(ProductContext context, IHttpContextAccessor contextAccessor, IEmailSender emailSender)
         {
             _context = context;
             _httpContextAccessor = contextAccessor;
@@ -28,6 +30,7 @@ namespace LicentaApi.Controllers
             {
                 _user = _httpContextAccessor?.HttpContext?.User.Claims.ToArray()[5].ToString().Split(":").Last().Trim();
             }
+            this.emailSender = emailSender;
         }
 
         // GET: api/ProductControler
@@ -60,6 +63,15 @@ namespace LicentaApi.Controllers
             }
 
             return product;
+        }
+
+        [HttpPost("email")]
+        [Authorize]
+        public async Task Index(EmailDTO emailDTO)
+        {
+            var emailAddress = _context.ApplicationUsers.Where(x => x.Username == _user).First().Email;
+            await emailSender.SendEmailAsync(emailAddress, "Confirmation", $"Congratulations you overbidded on this product {emailDTO.ProductName} with this price {emailDTO.ProductPrice}");
+            return;
         }
 
         // GET: api/ProductControler/5
@@ -221,8 +233,5 @@ namespace LicentaApi.Controllers
 
         //     }
         // } 
-
-
-
     }
 }

@@ -15,6 +15,10 @@ builder.Services.AddDbContext<ProductContext>(options => options.UseSqlServer(bu
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
+
+//Email 
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+
 //Autentificare
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {

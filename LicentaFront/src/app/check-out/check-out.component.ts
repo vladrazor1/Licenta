@@ -48,14 +48,10 @@ export class CheckOutComponent {
     this.productService
       .updateProduct(this.product)
       .subscribe((data: Product) => {
+        this.product = data;
         alert('Congratulations on the auction done and good luck !');
         this.route.navigate(['/home']);
       });
+    this.productService.sendEmail(this.product.title, this.product.price).subscribe();
   }
-
-  sendEmail(){
-      
-  }
-
-  
 }
