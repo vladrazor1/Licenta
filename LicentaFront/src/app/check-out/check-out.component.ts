@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Product } from '../modules/product';
 import { ProductService } from '../services/product.service';
@@ -14,6 +14,7 @@ export class CheckOutComponent {
   
   product = {} as Product;
   productForm: FormGroup = new FormGroup({});
+  oldPrice = 0;
 
   constructor(
     private productService: ProductService,
@@ -24,6 +25,8 @@ export class CheckOutComponent {
     this.activatedRoute.params.subscribe((params) => {
       this.product.id = params['id'];
     });
+
+    this.oldPrice = this.product.price;
   }
 
 
@@ -33,9 +36,10 @@ export class CheckOutComponent {
       .subscribe((data: Product) => (this.product = data));
 
       this.productForm = this.formBuilder.group({
-        price: ['', [Validators.required, Validators.min(1)]],
-      });
+        price: ['', [Validators.required, Validators.min(this.oldPrice)]],
+      });   
 
+      console.log(this.product);
   }
 
 
@@ -52,4 +56,6 @@ export class CheckOutComponent {
   sendEmail(){
       
   }
+
+  
 }
