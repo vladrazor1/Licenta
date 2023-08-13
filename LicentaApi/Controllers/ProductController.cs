@@ -164,7 +164,7 @@ namespace LicentaApi.Controllers
                 StartingDate = productDTO.StartingDate,
                 ExpirationDate = productDTO.ExpirationDate,
                 Title = productDTO.Title,
-                // Image = productDTO.Image ?? Array.Empty<byte>()
+                Image = productDTO.Image,
             };
 
             _context.Products.Add(product);
@@ -205,33 +205,5 @@ namespace LicentaApi.Controllers
             return _context.Products.Any(e => e.Id == id);
         }
 
-
-        // [HttpPost("uploadFile")]
-        // [DisableRequestSizeLimit]
-        // public IActionResult Upload()
-        // {
-        //     try{
-        //         var file = Request.Form.Files[0];
-        //         var folderName = Path.Combine("Resources", "Images");
-        //         var pathToSave = pathToSave.Combine(Directory.GetCurrentDirectory(), folderName);
-        //         if(file.Lenght > 0)
-        //         {
-        //             var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-        //             var fullPath = pathToSave.Combine(pathToSave, fileName);
-        //             var dbPath = Path.Combine(folderName, fileName);
-        //             using(var stream = new FileStream(fullPath, FileMode.Create))
-        //             {
-        //                 file.CopyTo(stream);
-        //             }
-        //             return OK(new {dbPath});
-        //         }
-        //         else{
-        //             return BadRequest();
-        //         }
-        //     }
-        //     catch{
-
-        //     }
-        // } 
     }
 }

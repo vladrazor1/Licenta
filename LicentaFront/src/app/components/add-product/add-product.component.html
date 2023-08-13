@@ -104,10 +104,20 @@
 
       <div class="radio">
         <p>Category:</p>
-        <input type="radio" id="category1"  value= 1  formControlName="categoryId">
+        <input
+          type="radio"
+          id="category1"
+          value="1"
+          formControlName="categoryId"
+        />
         <label for="category1">Furniture</label><br />
         <br />
-        <input type="radio" id="category2"  value= 2 formControlName="categoryId" />
+        <input
+          type="radio"
+          id="category2"
+          value="2"
+          formControlName="categoryId"
+        />
         <label for="category2">Cars</label><br />
       </div>
       <br />
@@ -217,15 +227,21 @@
           </div>
         </div>
       </div>
-
-      <input
-        type="file"
-        id="file"
-        #userPhoto
-        (change)="onFileSelected($event)"
-        name="image"
-        autocomplete="off"
-      />
+      <br />
+      <br />
+      <div class="field">
+        <label class="label" for="image">Description</label>
+        <input
+          formControlName="image"
+          required
+          type="file"
+          id="image"
+          #userPhoto
+          (change)="onFileSelected($event)"
+          name="image"
+          autocomplete="off"
+        />
+      </div>
       <p><img id="output" width="200" /></p>
 
       <button type="submit" [disabled]="productForm.invalid">Add</button>

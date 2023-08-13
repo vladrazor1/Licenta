@@ -1,3 +1,4 @@
+
 import { Overbidding } from "./overbidding";
 
 
@@ -13,5 +14,5 @@ export interface Product {
   view?: number;
   startingDate?: Date;
   expirationDate?: Date;
-
+  image: Blob,
 }
