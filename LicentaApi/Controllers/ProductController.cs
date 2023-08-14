@@ -164,7 +164,7 @@ namespace LicentaApi.Controllers
                 StartingDate = productDTO.StartingDate,
                 ExpirationDate = productDTO.ExpirationDate,
                 Title = productDTO.Title,
-                Image = productDTO.Image,
+                // Image = productDTO.Image,
             };
 
             _context.Products.Add(product);

@@ -71,4 +71,11 @@ export class CategoryProductsComponent {
     this.searchValue= this.searchForm.value.searchValue ?? '';
     this.fatcheData();
   }
+
+  imageCat(product: Product){
+    if (product.categoryId == 1) {
+      return true;
+    }
+    return false;
+  }
 }

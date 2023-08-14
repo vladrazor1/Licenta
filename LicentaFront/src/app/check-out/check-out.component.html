@@ -40,7 +40,7 @@
                 class="help is-danger"
                 *ngIf="productForm.controls['price'].errors?.['min']"
               >
-                The price must be greater than the last price!
+                The price must be greater than 1 !
               </p>
             </div>
           </div>
@@ -53,7 +53,8 @@
           <br />
 
           <div>
-            <img src="/assets/Images/test.jpeg" />
+            <img id="carIMG" *ngIf="!imageCat(product)" src="/assets/Images/default-car.jpg" />
+            <img id="furnitureIMG" *ngIf="imageCat(product)" src="/assets/Images/default-furniture.jpg" />
           </div>
 
           <button

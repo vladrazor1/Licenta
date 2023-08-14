@@ -38,7 +38,7 @@ export class AddProductComponent {
       text: ['', [Validators.required, Validators.minLength(3)]],
       startingDate: ['', [Validators.required]],
       expirationDate: ['', [Validators.required]],
-      image: [''],
+      // image: [''],
     });
   }
 
@@ -53,13 +53,13 @@ export class AddProductComponent {
       alert('Product added successfully!');
     });
 
-    // this.route.navigate(['/home']);
+    this.route.navigate(['/home']);
   }
 
   addProduct(): void {
     this.productService.addProduct(this.product).subscribe((data: Product) => {
       alert('Product added successfully!');
-      // this.route.navigate(['/home']);
+      this.route.navigate(['/home']);
     });
   }
 
@@ -68,21 +68,21 @@ export class AddProductComponent {
   }
 
   onFileSelected(event: any) {
-    console.log(event);
+    // console.log(event);
 
-    this.selectedFile = <File>event.target.files[0];
+    // this.selectedFile = <File>event.target.files[0];
 
-    var myReader: FileReader = new FileReader();
+    // var myReader: FileReader = new FileReader();
 
 
-    myReader.readAsDataURL(this.selectedFile);
+    // myReader.readAsDataURL(this.selectedFile);
 
-    myReader.onloadend = (e) => {
-      this.image = myReader.result;
-      this.productForm.value.image = this.image;
-      console.log(this.productForm.value.image);
-      console.log(this.image);
-    };
+    // myReader.onloadend = (e) => {
+    //   this.image = myReader.result;
+    //   this.productForm.value.image = this.image;
+    //   console.log(this.productForm.value.image);
+    //   console.log(this.image);
+    // };
   }
 
 }
