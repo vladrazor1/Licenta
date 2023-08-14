@@ -41,8 +41,14 @@
           </header>
           <div class="card-content">
             <div class="content">
-              <img *ngIf="!imageCat(product)" src="/assets/Images/default-car.jpg" />
-              <img *ngIf="imageCat(product)" src="/assets/Images/default-furniture.jpg" />
+              <img
+                *ngIf="!imageCat(product)"
+                src="/assets/Images/default-car.jpg"
+              />
+              <img
+                *ngIf="imageCat(product)"
+                src="/assets/Images/default-furniture.jpg"
+              />
               <br />
               <p class="cardInfos">
                 {{ product.text }}

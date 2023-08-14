@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { Product } from '../modules/product';
 import { ProductService } from '../services/product.service';
@@ -6,7 +5,6 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { of, tap, delay } from 'rxjs';
 import { FormBuilder } from '@angular/forms';
-
 
 @Component({
   selector: 'app-home',
@@ -24,20 +22,20 @@ export class HomeComponent {
     private productService: ProductService,
     private sharedService: UserService,
     private route: Router,
-    private fb: FormBuilder,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     let search = localStorage.getItem('searchValue') ?? '';
-    if(search != '')
-    {
+    if (search != '') {
       console.log(search + 'onInnit');
-      this.productService.getProductByNav(search).subscribe((data: Product[]) => (this.myDataArray = data));
-    }else
-    {
       this.productService
-      .getProducts()
-      .subscribe((data: Product[]) => (this.myDataArray = data));
+        .getProductByNav(search)
+        .subscribe((data: Product[]) => (this.myDataArray = data));
+    } else {
+      this.productService
+        .getProducts()
+        .subscribe((data: Product[]) => (this.myDataArray = data));
     }
   }
 
@@ -55,23 +53,25 @@ export class HomeComponent {
     });
   }
 
-  isLoggedIn(){
+  isLoggedIn() {
     return this.sharedService.isLoggedIn();
   }
 
-  fatcheData(): void{
-    this.productService.getProductByNav(this.searchValue).subscribe((myDataArray)=>{
-       this.myDataArray= myDataArray;
-    })
+  fatcheData(): void {
+    this.productService
+      .getProductByNav(this.searchValue)
+      .subscribe((myDataArray) => {
+        this.myDataArray = myDataArray;
+      });
   }
 
-  onSearchSubmit(): void{
+  onSearchSubmit(): void {
     console.log('search value ' + localStorage.getItem('searchValue'));
-    this.searchValue= this.searchForm.value.searchValue ?? '';
+    this.searchValue = this.searchForm.value.searchValue ?? '';
     this.fatcheData();
   }
 
-  imageCat(product: Product){
+  imageCat(product: Product) {
     if (product.categoryId == 1) {
       return true;
     }

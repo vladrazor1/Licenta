@@ -1,86 +1,86 @@
 <div class="hero">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="field">
-        <label class="label" for="username">Username</label>
-        <div class="control">
-          <input
-            class="input"
-            id="username"
-            formControlName="username"
-            required
-            minlength="3"
-            [ngClass]="{
-              'is-danger':
-                loginForm.controls['username'].invalid &&
-                loginForm.controls['username'].dirty &&
-                loginForm.controls['username'].touched
-            }"
-          />
-        </div>
-  
-        <div
-          class="notification"
-          *ngIf="
-            loginForm.controls['username'].invalid &&
-            loginForm.controls['username'].dirty &&
-            loginForm.controls['username'].touched
-          "
-        >
-          <p
-            class="help is-danger"
-            *ngIf="loginForm.controls['username'].errors?.['required']"
-          >
-            Username is required.
-          </p>
-          <p
-            class="help is-danger"
-            *ngIf="loginForm.controls['username'].errors?.['minlength']"
-          >
-            Username must be at least 3 characters long.
-          </p>
-        </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label class="label" for="username">Username</label>
+      <div class="control">
+        <input
+          class="input"
+          id="username"
+          formControlName="username"
+          required
+          minlength="3"
+          [ngClass]="{
+            'is-danger':
+              loginForm.controls['username'].invalid &&
+              loginForm.controls['username'].dirty &&
+              loginForm.controls['username'].touched
+          }"
+        />
       </div>
-      <div class="field">
-        <label class="label" for="password">Password</label>
-        <div class="control">
-          <input
-            id="password"
-            formControlName="password"
-            required
-            minlength="3"
-            class="input"
-            type="password"
-            [ngClass]="{
-              'is-danger':
-                loginForm.controls['password'].invalid &&
-                loginForm.controls['password'].dirty &&
-                loginForm.controls['password'].touched
-            }"
-          />
-          <div
-            class="notification"
-            *ngIf="
+
+      <div
+        class="notification"
+        *ngIf="
+          loginForm.controls['username'].invalid &&
+          loginForm.controls['username'].dirty &&
+          loginForm.controls['username'].touched
+        "
+      >
+        <p
+          class="help is-danger"
+          *ngIf="loginForm.controls['username'].errors?.['required']"
+        >
+          Username is required.
+        </p>
+        <p
+          class="help is-danger"
+          *ngIf="loginForm.controls['username'].errors?.['minlength']"
+        >
+          Username must be at least 3 characters long.
+        </p>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label" for="password">Password</label>
+      <div class="control">
+        <input
+          id="password"
+          formControlName="password"
+          required
+          minlength="3"
+          class="input"
+          type="password"
+          [ngClass]="{
+            'is-danger':
               loginForm.controls['password'].invalid &&
               loginForm.controls['password'].dirty &&
               loginForm.controls['password'].touched
-            "
+          }"
+        />
+        <div
+          class="notification"
+          *ngIf="
+            loginForm.controls['password'].invalid &&
+            loginForm.controls['password'].dirty &&
+            loginForm.controls['password'].touched
+          "
+        >
+          <p
+            class="help danger"
+            *ngIf="loginForm.controls['password'].errors?.['required']"
           >
-            <p
-              class="help danger"
-              *ngIf="loginForm.controls['password'].errors?.['required']"
-            >
-              Password is required.
-            </p>
-            <p
-              class="help danger"
-              *ngIf="loginForm.controls['password'].errors?.['minlength']"
-            >
-              Password must be at least 3 characters long.
-            </p>
-          </div>
+            Password is required.
+          </p>
+          <p
+            class="help danger"
+            *ngIf="loginForm.controls['password'].errors?.['minlength']"
+          >
+            Password must be at least 3 characters long.
+          </p>
         </div>
       </div>
-  
-      <button type="submit" [disabled]="loginForm.invalid">Login</button>
-    </form>
-  </div>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+</div>

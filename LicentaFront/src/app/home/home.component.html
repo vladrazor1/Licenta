@@ -41,8 +41,14 @@
           </header>
           <div class="card-content">
             <div class="content">
-              <img *ngIf="!imageCat(product)" src="/assets/Images/default-car.jpg" />
-              <img *ngIf="imageCat(product)" src="/assets/Images/default-furniture.jpg" />
+              <img
+                *ngIf="!imageCat(product)"
+                src="/assets/Images/default-car.jpg"
+              />
+              <img
+                *ngIf="imageCat(product)"
+                src="/assets/Images/default-furniture.jpg"
+              />
               <br />
               <p class="cardInfos">
                 {{ product.text }}
@@ -65,17 +71,15 @@
                 >Save</a
               >
 
-           
               <a
                 *ngIf="!mineProduct(product)"
                 [routerLink]="['/check-out/', product.id]"
                 class="card-footer-item"
                 >Check-Out</a
               >
-          
-            <a href="#" class="card-footer-item">Share</a>
 
-          </div >
+              <a href="#" class="card-footer-item">Share</a>
+            </div>
           </footer>
         </div>
         <br />

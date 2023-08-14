@@ -1,135 +1,131 @@
 <div class="hero">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-
-<!-- UsserName -->
-      <div class="field">
-        <label class="label" for="username">Username</label>
-        <div class="control">
-          <input
-            class="input"
-            id="username"
-            formControlName="username"
-            required
-            minlength="3"
-            [ngClass]="{
-              'is-danger':
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!-- UsserName -->
+    <div class="field">
+      <label class="label" for="username">Username</label>
+      <div class="control">
+        <input
+          class="input"
+          id="username"
+          formControlName="username"
+          required
+          minlength="3"
+          [ngClass]="{
+            'is-danger':
               registerForm.controls['username'].invalid &&
               registerForm.controls['username'].dirty &&
               registerForm.controls['username'].touched
-            }"
-          />
-        </div>
-  
-        <div
-          class="notification"
-          *ngIf="
+          }"
+        />
+      </div>
+
+      <div
+        class="notification"
+        *ngIf="
           registerForm.controls['username'].invalid &&
           registerForm.controls['username'].dirty &&
           registerForm.controls['username'].touched
-          "
+        "
+      >
+        <p
+          class="help is-danger"
+          *ngIf="registerForm.controls['username'].errors?.['required']"
         >
-          <p
-            class="help is-danger"
-            *ngIf="registerForm.controls['username'].errors?.['required']"
-          >
-            Username is required.
-          </p>
-          <p
-            class="help is-danger"
-            *ngIf="registerForm.controls['username'].errors?.['minlength']"
-          >
-            Username must be at least 3 characters long.
-          </p>
-        </div>
+          Username is required.
+        </p>
+        <p
+          class="help is-danger"
+          *ngIf="registerForm.controls['username'].errors?.['minlength']"
+        >
+          Username must be at least 3 characters long.
+        </p>
       </div>
+    </div>
 
-<!-- Password -->
-      <div class="field">
-        <label class="label" for="password">Password</label>
-        <div class="control">
-          <input
-            id="password"
-            formControlName="password"
-            required
-            minlength="3"
-            class="input"
-            type="password"
-            [ngClass]="{
-              'is-danger':
+    <!-- Password -->
+    <div class="field">
+      <label class="label" for="password">Password</label>
+      <div class="control">
+        <input
+          id="password"
+          formControlName="password"
+          required
+          minlength="3"
+          class="input"
+          type="password"
+          [ngClass]="{
+            'is-danger':
               registerForm.controls['password'].invalid &&
               registerForm.controls['password'].dirty &&
               registerForm.controls['password'].touched
-            }"
-          />
-          <div
-            class="notification"
-            *ngIf="
+          }"
+        />
+        <div
+          class="notification"
+          *ngIf="
             registerForm.controls['password'].invalid &&
             registerForm.controls['password'].dirty &&
             registerForm.controls['password'].touched
-            "
+          "
+        >
+          <p
+            class="help danger"
+            *ngIf="registerForm.controls['password'].errors?.['required']"
           >
-            <p
-              class="help danger"
-              *ngIf="registerForm.controls['password'].errors?.['required']"
-            >
-              Password is required.
-            </p>
-            <p
-              class="help danger"
-              *ngIf="registerForm.controls['password'].errors?.['minlength']"
-            >
-              Password must be at least 3 characters long.
-            </p>
-          </div>
+            Password is required.
+          </p>
+          <p
+            class="help danger"
+            *ngIf="registerForm.controls['password'].errors?.['minlength']"
+          >
+            Password must be at least 3 characters long.
+          </p>
         </div>
       </div>
+    </div>
 
-<!-- Email -->
-      <div class="field">
-        <label class="label" for="email">Email</label>
-        <div class="control">
-          <input
-            id="email"
-            formControlName="email"
-            required
-            minlength="3"
-            class="input"
-            type="email"
-            [ngClass]="{
-              'is-danger':
+    <!-- Email -->
+    <div class="field">
+      <label class="label" for="email">Email</label>
+      <div class="control">
+        <input
+          id="email"
+          formControlName="email"
+          required
+          minlength="3"
+          class="input"
+          type="email"
+          [ngClass]="{
+            'is-danger':
               registerForm.controls['email'].invalid &&
               registerForm.controls['email'].dirty &&
               registerForm.controls['email'].touched
-            }"
-          />
-          <div
-            class="notification"
-            *ngIf="
+          }"
+        />
+        <div
+          class="notification"
+          *ngIf="
             registerForm.controls['email'].invalid &&
             registerForm.controls['email'].dirty &&
             registerForm.controls['email'].touched
-            "
+          "
+        >
+          <p
+            class="help danger"
+            *ngIf="registerForm.controls['email'].errors?.['required']"
           >
-            <p
-              class="help danger"
-              *ngIf="registerForm.controls['email'].errors?.['required']"
-            >
             Email is required.
-            </p>
-            <p
-              class="help danger"
-              *ngIf="registerForm.controls['email'].errors?.['minlength']"
-            >
+          </p>
+          <p
+            class="help danger"
+            *ngIf="registerForm.controls['email'].errors?.['minlength']"
+          >
             Email must be at least 3 characters long.
-            </p>
-          </div>
+          </p>
         </div>
       </div>
+    </div>
 
-
-  
-      <button type="submit" [disabled]="registerForm.invalid">Register</button>
-    </form>
-  </div>
-
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+</div>

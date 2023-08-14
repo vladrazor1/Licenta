@@ -1,10 +1,10 @@
 h2 {
-    display: flex;
-    justify-content: center;
-    margin-top: 20%;
-  }
+  display: flex;
+  justify-content: center;
+  margin-top: 20%;
+}
 
-  .data{
-    display: flex;
-    justify-content: center;
-  }
+.data {
+  display: flex;
+  justify-content: center;
+}

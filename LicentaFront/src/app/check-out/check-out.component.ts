@@ -63,7 +63,7 @@ export class CheckOutComponent {
     }
   }
 
-  imageCat(product: Product){
+  imageCat(product: Product) {
     if (product.categoryId == 1) {
       return true;
     }

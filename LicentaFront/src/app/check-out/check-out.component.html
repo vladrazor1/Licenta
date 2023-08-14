@@ -53,8 +53,16 @@
           <br />
 
           <div>
-            <img id="carIMG" *ngIf="!imageCat(product)" src="/assets/Images/default-car.jpg" />
-            <img id="furnitureIMG" *ngIf="imageCat(product)" src="/assets/Images/default-furniture.jpg" />
+            <img
+              id="carIMG"
+              *ngIf="!imageCat(product)"
+              src="/assets/Images/default-car.jpg"
+            />
+            <img
+              id="furnitureIMG"
+              *ngIf="imageCat(product)"
+              src="/assets/Images/default-furniture.jpg"
+            />
           </div>
 
           <button

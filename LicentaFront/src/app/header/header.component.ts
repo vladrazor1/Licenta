@@ -8,7 +8,7 @@ import { of, tap, delay } from 'rxjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
   searchValue = '';
@@ -17,35 +17,33 @@ export class HeaderComponent {
   });
 
   @Output() search = new EventEmitter<string>();
-  
+
   constructor(
-    private sharedService:UserService,
+    private sharedService: UserService,
     private fb: FormBuilder,
-    private route: Router,
-    ) {}
-  
-    ngOnInit(): void {
-    }
+    private route: Router
+  ) {}
 
+  ngOnInit(): void {}
 
-    getUsername2(){
-      return this.sharedService.getUsername();
-    }
+  getUsername2() {
+    return this.sharedService.getUsername();
+  }
 
-    isLoggedIn2(){
-      return this.sharedService.isLoggedIn();
-    }
+  isLoggedIn2() {
+    return this.sharedService.isLoggedIn();
+  }
 
-    logOut2(){
-      this.sharedService.logout();
-    }
+  logOut2() {
+    this.sharedService.logout();
+  }
 
-    onSearchSubmit(): void{
-      localStorage.setItem('searchValue',this.searchValue);
-      console.log(window.location.href)
-      if(window.location.href == 'http://localhost:4200/home'){
-        location.reload();
-      }
-       this.route.navigate(['/home']);
+  onSearchSubmit(): void {
+    localStorage.setItem('searchValue', this.searchValue);
+    console.log(window.location.href);
+    if (window.location.href == 'http://localhost:4200/home') {
+      location.reload();
     }
+    this.route.navigate(['/home']);
+  }
 }

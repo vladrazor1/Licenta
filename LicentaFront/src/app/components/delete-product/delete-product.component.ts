@@ -6,11 +6,10 @@ import { Product } from 'src/app/modules/product';
 @Component({
   selector: 'app-delete-product',
   templateUrl: './delete-product.component.html',
-  styleUrls: ['./delete-product.component.css']
+  styleUrls: ['./delete-product.component.css'],
 })
 export class DeleteProductComponent {
   product = {} as Product;
-
 
   constructor(
     private productService: ProductService,

@@ -6,7 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
   registerForm: FormGroup = new FormGroup({});
@@ -31,7 +31,6 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.minLength(3)]],
     });
 
-    
     this.userService.user.subscribe((user) => {
       if (user) {
         alert('Login successful');
@@ -41,18 +40,16 @@ export class RegisterComponent {
     });
   }
 
-
   get username() {
     return this.registerForm.value.username;
   }
   get password() {
     return this.registerForm.value.password;
   }
-  get email(){
+  get email() {
     return this.registerForm.value.email;
   }
 
-  
   onSubmit() {
     this.submitted = true;
 

@@ -13,21 +13,24 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CategoryProductsComponent } from './category-products/category-products.component';
 
 const routes: Routes = [
-  {path: 'home' ,component: HomeComponent},
-  {path: 'logIn' ,component: LoginComponent},
-  {path: 'register' ,component: RegisterComponent},
-  {path: 'show-all-product', component: ShowAllProductComponent},
-  {path: 'eddit/:id', component: EditProductComponent,},
-  {path: 'show-all-product/delete/:id',component: DeleteProductComponent},
-  {path: 'show-all-product/add',component: AddProductComponent},
-  {path: 'my-posts',component: MyPostsComponent},
-  {path: 'check-out/:id',component: CheckOutComponent},
-  {path: 'my-profile',component: MyProfileComponent},
-  {path: 'category-products/:categoryId',component: CategoryProductsComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'logIn', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'show-all-product', component: ShowAllProductComponent },
+  { path: 'eddit/:id', component: EditProductComponent },
+  { path: 'show-all-product/delete/:id', component: DeleteProductComponent },
+  { path: 'show-all-product/add', component: AddProductComponent },
+  { path: 'my-posts', component: MyPostsComponent },
+  { path: 'check-out/:id', component: CheckOutComponent },
+  { path: 'my-profile', component: MyProfileComponent },
+  {
+    path: 'category-products/:categoryId',
+    component: CategoryProductsComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

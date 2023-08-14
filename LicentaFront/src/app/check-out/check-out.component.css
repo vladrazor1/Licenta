@@ -1,92 +1,85 @@
-section{
-    justify-content: center;
-    margin-top: 10%;
+section {
+  justify-content: center;
+  margin-top: 10%;
 }
 
-h2{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50%;  
+h2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50%;
 }
 
-
-#price{
-    display: flex;
-    justify-content: center;
+#price {
+  display: flex;
+  justify-content: center;
 }
 
-
-#text{
-    display: flex;
-    justify-content: center;
+#text {
+  display: flex;
+  justify-content: center;
 }
 
-
-#start{
-    display: flex;
-    justify-content: center;
+#start {
+  display: flex;
+  justify-content: center;
 }
 
-
-#end{
-    display: flex;
-    justify-content: center;
+#end {
+  display: flex;
+  justify-content: center;
 }
 
-image{
-    display: flex;
-    justify-content: center;
+image {
+  display: flex;
+  justify-content: center;
 }
-
 
 .round-5 {
-    border-radius: 50%;
-    /* margin-top: 20%;
+  border-radius: 50%;
+  /* margin-top: 20%;
     display: flex;
     justify-content: center;  */
-  } 
+}
 
-  #check-out {
-    background-color: #48abe0;
-    color: white;
-    border: none;
-    padding: 5px;
-    font-size: 31px;
-    height: 70px;
-    /* width: 130px; */
-    box-shadow: 0 2px 4px darkslategray;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: fixed;
-    bottom: 0;
-    right: 5px;
-  }
-  
-  #newProd:hover {
-   background-color: #65b9e6;
-  }
-  
-  #newProd:active {
-    box-shadow: 0 0 2px darkslategray;
-    transform: translateY(2px);
-  }
-  
-  #newProd {
-    margin-bottom: 10px;
-  }
+#check-out {
+  background-color: #48abe0;
+  color: white;
+  border: none;
+  padding: 5px;
+  font-size: 31px;
+  height: 70px;
+  /* width: 130px; */
+  box-shadow: 0 2px 4px darkslategray;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: fixed;
+  bottom: 0;
+  right: 5px;
+}
 
-  #carIMG{
-    
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+#newProd:hover {
+  background-color: #65b9e6;
+}
 
+#newProd:active {
+  box-shadow: 0 0 2px darkslategray;
+  transform: translateY(2px);
+}
 
- #furnitureIMG{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
- }   
+#newProd {
+  margin-bottom: 10px;
+}
+
+#carIMG {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#furnitureIMG {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

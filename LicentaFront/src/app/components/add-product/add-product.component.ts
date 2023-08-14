@@ -48,7 +48,6 @@ export class AddProductComponent {
   }
 
   async onSubmit(): Promise<void> {
-
     this.productService.addProduct(this.product).subscribe((_) => {
       alert('Product added successfully!');
     });
@@ -69,14 +68,9 @@ export class AddProductComponent {
 
   onFileSelected(event: any) {
     // console.log(event);
-
     // this.selectedFile = <File>event.target.files[0];
-
     // var myReader: FileReader = new FileReader();
-
-
     // myReader.readAsDataURL(this.selectedFile);
-
     // myReader.onloadend = (e) => {
     //   this.image = myReader.result;
     //   this.productForm.value.image = this.image;
@@ -84,5 +78,4 @@ export class AddProductComponent {
     //   console.log(this.image);
     // };
   }
-
 }

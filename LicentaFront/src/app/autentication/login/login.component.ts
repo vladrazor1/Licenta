@@ -4,11 +4,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { of, tap, delay } from 'rxjs';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   loginForm: FormGroup = new FormGroup({});
@@ -60,11 +59,5 @@ export class LoginComponent {
     this.loading = true;
     this.userService.login(this.username, this.password);
     this.router.navigate(['/home']);
-    // of(1, 2, 3, 4, 5)
-    // .pipe(
-    //   tap(val => console.log("Before " + val)),
-    //   delay(1000)
-    // )
-    // location.reload();
   }
 }

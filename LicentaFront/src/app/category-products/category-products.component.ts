@@ -8,17 +8,15 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-category-products',
   templateUrl: './category-products.component.html',
-  styleUrls: ['./category-products.component.css']
+  styleUrls: ['./category-products.component.css'],
 })
 export class CategoryProductsComponent {
-
-
   myDataArray: Product[] = [];
   searchValue = '';
   searchForm = this.fb.nonNullable.group({
     searchValue: '',
   });
-  
+
   categoryId = 0;
 
   constructor(
@@ -26,11 +24,9 @@ export class CategoryProductsComponent {
     private productService: ProductService,
     private sharedService: UserService,
     private route: Router,
-    private fb: FormBuilder,
+    private fb: FormBuilder
   ) {
-   
     this.activatedRoute.params.subscribe((params) => {
-  
       this.categoryId = params['categoryId'];
     });
   }
@@ -55,24 +51,25 @@ export class CategoryProductsComponent {
     });
   }
 
-  isLoggedIn(){
+  isLoggedIn() {
     return this.sharedService.isLoggedIn();
   }
 
-
-  fatcheData(): void{
-    this.productService.getProductByNav(this.searchValue).subscribe((myDataArray)=>{
-       this.myDataArray= myDataArray;
-    })
+  fatcheData(): void {
+    this.productService
+      .getProductByNav(this.searchValue)
+      .subscribe((myDataArray) => {
+        this.myDataArray = myDataArray;
+      });
   }
 
-  onSearchSubmit(): void{
+  onSearchSubmit(): void {
     console.log('search value ' + localStorage.getItem('searchValue'));
-    this.searchValue= this.searchForm.value.searchValue ?? '';
+    this.searchValue = this.searchForm.value.searchValue ?? '';
     this.fatcheData();
   }
 
-  imageCat(product: Product){
+  imageCat(product: Product) {
     if (product.categoryId == 1) {
       return true;
     }

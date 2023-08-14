@@ -1,14 +1,13 @@
-
-#formAddProd{
-    justify-content: center;
-    margin-top: 20%;
+#formAddProd {
+  justify-content: center;
+  margin-top: 20%;
 }
 
-
-
 h1 {
-    display: flex;
-    justify-content: center;
-  }
+  display: flex;
+  justify-content: center;
+}
 
-  .radio { font-weight: bold; }
+.radio {
+  font-weight: bold;
+}

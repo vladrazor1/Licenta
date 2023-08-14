@@ -6,9 +6,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../modules/user';
 import { API_URL_LOG } from '../constants';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private userSubject: BehaviorSubject<User | null>;
@@ -36,11 +35,10 @@ export class UserService {
         localStorage.setItem('user', JSON.stringify(user));
         this.userSubject.next(user);
         this.router.navigateByUrl('/home');
-        of(1, 2, 3, 4, 5)
-        .pipe(
-          tap(val => console.log("Before " + val)),
+        of(1, 2, 3, 4, 5).pipe(
+          tap((val) => console.log('Before ' + val)),
           delay(1000)
-        )
+        );
         location.reload();
       });
   }
@@ -53,12 +51,11 @@ export class UserService {
     if (!localStorage.getItem('user')) {
       alert('Disconected!');
     }
-    
-    of(1, 2, 3, 4, 5)
-    .pipe(
-      tap(val => console.log("Before " + val)),
+
+    of(1, 2, 3, 4, 5).pipe(
+      tap((val) => console.log('Before ' + val)),
       delay(1000)
-    )
+    );
     this.router.navigateByUrl('/home');
   }
 
@@ -86,7 +83,7 @@ export class UserService {
     return undefined;
   }
 
-  getUserId() :number | undefined {
+  getUserId(): number | undefined {
     const user = this.userValue;
     if (user) {
       return this.decodeToken(this.getUserData().token).UserId;
@@ -113,6 +110,4 @@ export class UserService {
         this.router.navigateByUrl('/home');
       });
   }
-
-
 }
