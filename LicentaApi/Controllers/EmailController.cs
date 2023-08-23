@@ -24,8 +24,5 @@ namespace LicentaApi.Controllers
 
             this.emailSender = emailSender;
         }
-
-
-        
     }
 }

@@ -78,6 +78,7 @@ i {
   .topnav .search-container {
     float: none;
   }
+  
   .topnav a,
   .topnav input[type="text"],
   .topnav .search-container button {

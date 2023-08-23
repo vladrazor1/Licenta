@@ -31,13 +31,13 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.minLength(3)]],
     });
 
-    this.userService.user.subscribe((user) => {
-      if (user) {
-        alert('Login successful');
-        this.router.navigate(['/home']);
-      }
-      this.loading = false;
-    });
+    // this.userService.user.subscribe((user) => {
+    //   if (user) {
+    //     alert('Account registration was successful !');
+    //     this.router.navigate(['/home']);
+    //   }
+    //   this.loading = false;
+    // });
   }
 
   get username() {
@@ -57,9 +57,10 @@ export class RegisterComponent {
     if (this.registerForm.invalid) {
       return;
     }
-
     this.error = '';
     this.loading = true;
     this.userService.register(this.username, this.password, this.email);
+    alert('Account registration was successful !');
+    this.router.navigate(['/home']);
   }
 }

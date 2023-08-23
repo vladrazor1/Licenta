@@ -33,7 +33,7 @@ export class LoginComponent {
 
     this.userService.user.subscribe((user) => {
       if (user) {
-        alert('Login successful');
+        alert('Log in successful !');
         this.router.navigate(['/home']);
       }
       this.loading = false;
