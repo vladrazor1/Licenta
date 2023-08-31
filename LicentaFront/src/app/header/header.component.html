@@ -135,8 +135,11 @@
             Log in
           </a>
 
-          <a *ngIf="isLoggedIn2()" class="button is-light">
+          <a *ngIf="isLoggedIn2()" class="button is-light"
+          [routerLink]="['/my-profile']"
+          >
             <strong>{{ getUsername2() }}</strong>
+            
           </a>
 
           <button
